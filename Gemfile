@@ -17,8 +17,8 @@ end
 gem 'activesupport', '~> 7.1.0'
 gem 'json', '~> 2.7.2'
 
-# eventmachine native build can fail on newer macOS; use upstream master
-gem 'eventmachine', github: 'eventmachine/eventmachine', branch: 'master'
+# Use released gem (works on Linux CI). Local macOS builds via ./serve.sh.
+gem 'eventmachine'
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.

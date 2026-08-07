@@ -10,7 +10,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
 
 url: https://tedlasai.github.io
-baseurl: /
+baseurl: ""
 last_updated: false
 
 # -----------------------------------------------------------------------------

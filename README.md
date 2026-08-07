@@ -39,6 +39,32 @@ Manual rebuild:
 Only `.tex` and `.bib` under `CV/` are meant to be committed; LaTeX build
 artifacts there are gitignored. `assets/pdf/cv.pdf` is the published copy.
 
+## File encoding (UTF-8 required)
+All text sources in this repo **must be UTF-8** (YAML, shell scripts, Markdown,
+HTML, TeX, BibTeX, etc.). GitHub Actions and Jekyll will fail or misparse files
+saved as UTF-16.
+
+### Known issue
+Some editors or sync tools occasionally rewrite files as UTF-16. The file can
+still look fine in the editor, but GitHub reports `Invalid workflow file` /
+YAML syntax errors (especially for `.github/workflows/pages.yml`), and scripts
+like `serve.sh` may fail with `cannot execute binary file`.
+
+**Fix — convert back to UTF-8:**
+```bash
+# Check (UTF-16 often shows as "data"; UTF-8 shows as "ASCII text" / "UTF-8")
+file .github/workflows/pages.yml serve.sh
+
+# Convert a UTF-16 file to UTF-8
+python3 -c "
+from pathlib import Path
+p = Path('.github/workflows/pages.yml')  # or another path
+p.write_bytes(p.read_bytes().decode('utf-16').encode('utf-8'))
+"
+```
+
+Re-check with `file …` (should be ASCII/UTF-8 text), then commit and push.
+
 # Licensing
 This work is distributed under the MIT license with portions modified from
 the [al-folio jekyll theme](https://github.com/alshedivat/al-folio) distributed by alshedivat.

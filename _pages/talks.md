@@ -4,7 +4,7 @@ permalink: /talks/
 title: talks
 page_title: selected talks
 description:
-nav: true
+nav: false
 nav_order: 4
 ---
 

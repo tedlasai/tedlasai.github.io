@@ -9,7 +9,7 @@ layout: default
       <img class="profile-img" src="{{ page.profile.image | prepend: '/assets/img/' | relative_url }}" alt="Profile photo">
     {% endif %}
     <div class="profile-info">
-      <h1 class="profile-name">{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}</h1>
+      <h1 class="profile-name">{{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}</h1>
       <p class="profile-desc">{{ page.description }}</p>
       {% if site.show_social_icons %}
       <div class="profile-social">{% include social.html %}</div>
@@ -22,11 +22,11 @@ layout: default
     {{ content }}
   </div>
 
-  {% if site.data.news %}
+  {% if page.news and site.data.news and site.data.news.size > 0 %}
     {% include news.html %}
   {% endif %}
 
-  {% if page.press and site.data.press %}
+  {% if page.press and site.data.press and site.data.press.size > 0 %}
     {% include press.html %}
   {% endif %}
 

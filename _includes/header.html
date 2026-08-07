@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="site-nav">
       <a class="site-title" href="{{ '/' | relative_url }}">
-        {{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}
+        {{ site.first_name }}{% if site.middle_name %} {{ site.middle_name }}{% endif %} {{ site.last_name }}
       </a>
       <span class="nav-links">
         <a href="{{ '/' | relative_url }}" {% if page.title == 'about' %}class="active"{% endif %}>about</a>

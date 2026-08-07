@@ -9,26 +9,26 @@ Jekyll to parse yml and markdown files and convert to the html site.
 
 `serve.sh` rebuilds the CV before starting Jekyll.
 
-## Keeping the resume in sync
+## Keeping the CV in sync
 Website content and the CV should stay aligned when you change either.
 
 - **Site publications:** `_bibliography/papers.bib`
-- **Resume sources:** `WebsiteResume/ResumeSaiTedla.tex` plus `WebsiteResume/*.bib`
+- **CV sources:** `CV/cv_saitedla.tex` plus `CV/*.bib`
 - **Served CV PDF:** `assets/pdf/cv.pdf` (nav "cv" link)
 
 ### Automatic PDF rebuild
-`bin/build-cv.sh` compiles the resume and copies it to `assets/pdf/cv.pdf`. It runs:
+`bin/build-cv.sh` compiles the CV and copies it to `assets/pdf/cv.pdf`. It runs:
 
 1. On local `./serve.sh`
 2. In GitHub Actions before the Jekyll Pages build
 3. Via a Cursor `afterFileEdit` hook when these change:
-   - `WebsiteResume/*.{tex,bib}`
+   - `CV/*.{tex,bib}`
    - `_bibliography/papers.bib`
    - `_data/news.yml`
    - `_pages/about.md`
 
 The hook/CI only **rebuild** the PDF from the LaTeX sources. If you change site
-news/papers/affiliations, also update the matching resume `.tex`/`.bib` content
+news/papers/affiliations, also update the matching CV `.tex`/`.bib` content
 when it makes sense (the agent should do this as part of site edits).
 
 Manual rebuild:
@@ -36,7 +36,7 @@ Manual rebuild:
 ./bin/build-cv.sh
 ```
 
-Only `.tex` and `.bib` under `WebsiteResume/` are meant to be committed; LaTeX build
+Only `.tex` and `.bib` under `CV/` are meant to be committed; LaTeX build
 artifacts there are gitignored. `assets/pdf/cv.pdf` is the published copy.
 
 # Licensing

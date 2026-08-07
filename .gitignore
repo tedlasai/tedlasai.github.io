@@ -36,20 +36,20 @@ tmp/
 temp/
 newimages/
 
-# Resume / CV LaTeX build artifacts (keep .tex and .bib only)
-WebsiteResume/*.aux
-WebsiteResume/*.bbl
-WebsiteResume/*.bcf
-WebsiteResume/*.blg
-WebsiteResume/*.fdb_latexmk
-WebsiteResume/*.fls
-WebsiteResume/*.out
-WebsiteResume/*.pdf
-WebsiteResume/*.run.xml
-WebsiteResume/*.synctex.gz
-WebsiteResume/*.toc
-WebsiteResume/*.lof
-WebsiteResume/*.lot
-WebsiteResume/*.nav
-WebsiteResume/*.snm
-WebsiteResume/*.vrb
+# CV LaTeX build artifacts (keep .tex and .bib only)
+CV/*.aux
+CV/*.bbl
+CV/*.bcf
+CV/*.blg
+CV/*.fdb_latexmk
+CV/*.fls
+CV/*.out
+CV/*.pdf
+CV/*.run.xml
+CV/*.synctex.gz
+CV/*.toc
+CV/*.lof
+CV/*.lot
+CV/*.nav
+CV/*.snm
+CV/*.vrb

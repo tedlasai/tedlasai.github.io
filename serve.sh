@@ -36,7 +36,7 @@ if ! bundle check >/dev/null 2>&1; then
   arch -x86_64 bundle install
 fi
 
-# Keep the nav CV PDF in sync with WebsiteResume sources
+# Keep the nav CV PDF in sync with CV/ sources
 ./bin/build-cv.sh || echo "Warning: CV rebuild skipped/failed; using existing assets/pdf/cv.pdf" >&2
 
 echo "Serving at http://127.0.0.1:4000"

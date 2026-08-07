@@ -1,20 +1,34 @@
 ---
 ---
 
+{% comment %} Prefer project page (html), else arXiv, else pdf. {% endcomment %}
+{% assign primary_url = nil %}
+{% if entry.html %}
+  {% if entry.html contains '://' %}
+    {% assign primary_url = entry.html %}
+  {% else %}
+    {% assign primary_url = '/publications/' | append: entry.html %}
+  {% endif %}
+{% elsif entry.arxiv %}
+  {% assign primary_url = 'https://arxiv.org/abs/' | append: entry.arxiv %}
+{% elsif entry.pdf %}
+  {% if entry.pdf contains '://' %}
+    {% assign primary_url = entry.pdf %}
+  {% else %}
+    {% assign primary_url = entry.pdf | prepend: '/assets/pdf/' | relative_url %}
+  {% endif %}
+{% endif %}
+
 <div class="pub-entry">
   <div class="pub-thumbnail">
-    {% if entry.html %}
-      <a href="{% if entry.html contains '://' %}{{ entry.html }}{% else %}/publications/{{ entry.html }}{% endif %}">
-    {% else %}
-      <a href="{{ entry.pdf }}">
-    {% endif %}
+    {% if primary_url %}<a href="{{ primary_url }}" target="_blank" rel="noopener">{% endif %}
       {% if entry.thumbnail contains '.gif' %}
         {% assign static_thumb = entry.thumbnail | replace: '.gif', '.png' %}
         <img src="/assets/img/publication/thumbnail/{{ static_thumb }}" data-gif="/assets/img/publication/thumbnail/{{ entry.thumbnail }}" class="publication-img gif-hover" alt="{{ entry.title }}">
       {% else %}
         <img src="/assets/img/publication/thumbnail/{{ entry.thumbnail }}" class="publication-img" alt="{{ entry.title }}">
       {% endif %}
-    </a>
+    {% if primary_url %}</a>{% endif %}
   </div>
 
   <div class="pub-details" id="{{ entry.key }}">
@@ -22,10 +36,10 @@
       {{ reference }}
     {% else %}
       <div class="pub-title">
-        {% if entry.html %}
-          <a href="{% if entry.html contains '://' %}{{ entry.html }}{% else %}/publications/{{ entry.html }}{% endif %}">{{ entry.title }}</a>
+        {% if primary_url %}
+          <a href="{{ primary_url }}" target="_blank" rel="noopener">{{ entry.title }}</a>
         {% else %}
-          <a href="{{ entry.pdf }}">{{ entry.title }}</a>
+          {{ entry.title }}
         {% endif %}
       </div>
       <div class="pub-authors">

@@ -1,0 +1,28 @@
+<div class="press-section featured-talks-section">
+  <h2>featured talks</h2>
+  {% if site.data.featured_talks %}
+    <ul class="press-list">
+      {% for item in site.data.featured_talks %}
+        {% assign talk_url = item.url %}
+        {% if item.youtube_id %}
+          {% assign talk_url = 'https://www.youtube.com/watch?v=' | append: item.youtube_id %}
+        {% endif %}
+        {% if item.image %}
+          {% assign talk_thumb = item.image | prepend: '/assets/img/talks/' | relative_url %}
+        {% elsif item.youtube_id %}
+          {% assign talk_thumb = 'https://img.youtube.com/vi/' | append: item.youtube_id | append: '/mqdefault.jpg' %}
+        {% endif %}
+        <li class="press-item">
+          <a class="press-thumb-link" href="{{ talk_url }}" target="_blank" rel="noopener">
+            <img class="press-thumb" src="{{ talk_thumb }}" alt="{{ item.title }}">
+            <span class="press-play" aria-hidden="true">&#9654;</span>
+          </a>
+          <div class="press-info">
+            <div class="press-source">{{ item.venue }}{% if item.date %} &middot; {{ item.date | date: "%b %Y" }}{% endif %}</div>
+            <a class="press-title" href="{{ talk_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

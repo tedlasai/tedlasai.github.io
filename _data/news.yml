@@ -6,5 +6,9 @@
   content: 'Successfully defended my PhD at York University!'
 - date: 2026-07-22
   content: 'Accepted to the <a href="https://eccv.ecva.net/Conferences/2026/CallForDoctoralConsortium">ECCV 2026 Doctoral Consortium</a>.'
+- date: 2026-07-07
+  content: 'My research was featured by the <a href="https://www.linkedin.com/posts/yorku-lassonde-computerscience-ugcPost-7477378157684170752-NsDr">Lassonde School of Engineering</a> at York University.'
+- date: 2026-05-31
+  content: 'I presented my work on <a href="https://www.youtube.com/watch?v=t1jlQYqknNw">Generative Re-Photography with Video Models</a> over the last few months across the US! Thank you to my hosts — Steve Seitz (University of Washington), Ioannis Gkioulekas (CMU VASC), Felix Heide (Princeton PIXL), Noah Snavely (Cornell Tech), Vincent Sitzmann (MIT CSAIL), Todd Zickler (Harvard), Ramesh Raskar (MIT Media Lab), Gordon Wetzstein (Stanford), and Laura Waller (UC Berkeley).'
 - date: 2025-12-01
   content: 'Awarded the <a href="https://schmidtfellows.utoronto.ca/">Eric and Wendy Schmidt AI in Science Postdoctoral Fellowship</a> at the University of Toronto (Schmidt Sciences).'

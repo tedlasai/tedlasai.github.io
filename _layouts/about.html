@@ -30,6 +30,10 @@ layout: default
     {% include press.html %}
   {% endif %}
 
+  {% if page.featured_talks and site.data.featured_talks and site.data.featured_talks.size > 0 %}
+    {% include featured_talks.html %}
+  {% endif %}
+
   {% if page.selected_papers %}
     {% include selected_papers.html %}
   {% endif %}

@@ -2,10 +2,10 @@
 layout: page
 permalink: /talks/
 title: talks
-page_title: selected talks
+page_title: talks
 description:
-nav: false
-nav_order: 4
+nav: true
+nav_order: 3
 ---
 
 <div class="talks-section">

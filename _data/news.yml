@@ -1,2 +1,2 @@
-# News items (optional). Leave empty to hide the news section.
-[]
+- date: 2026-8-6
+  content: My talk on <a href="https://www.youtube.com/watch?v=t1jlQYqknNw">Generative Rephotography with Video Models</a> is public — I discuss our SIGGRAPH Asia 2025 papers on leveraging video models to get more out of blurry images.

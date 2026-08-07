@@ -6,13 +6,10 @@
       </a>
       <span class="nav-links">
         <a href="{{ '/' | relative_url }}" {% if page.title == 'about' %}class="active"{% endif %}>about</a>
-        {% assign sorted_pages = site.pages | sort: "nav_order" %}
-        {% for p in sorted_pages %}
-          {% if p.nav and p.autogen == nil %}
-            <a href="{{ p.url | relative_url }}" {% if page.title == p.title %}class="active"{% endif %}>{{ p.title }}</a>
-          {% endif %}
-        {% endfor %}
+        <a href="{{ '/publications/' | relative_url }}" {% if page.title == 'publications' %}class="active"{% endif %}>publications</a>
+        <a href="{{ '/talks/' | relative_url }}" {% if page.title == 'talks' %}class="active"{% endif %}>talks</a>
         <a href="{{ '/assets/pdf/cv.pdf' | relative_url }}">cv</a>
+        <a href="{{ '/thoughts/' | relative_url }}" {% if page.title == 'thoughts' %}class="active"{% endif %}>thoughts</a>
       </span>
     </nav>
   </div>

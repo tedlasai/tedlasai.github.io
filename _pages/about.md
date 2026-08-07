@@ -19,3 +19,5 @@ I'm a curious researcher in computational photography. My current work focuses o
 I am a PhD student at York University, supervised by [Michael Brown](https://www.eecs.yorku.ca/~mbrown/), and a visiting student at the University of Toronto under [David Lindell](https://www.cs.toronto.edu/~lindell/) and [Kyros Kutulakos](https://www.cs.toronto.edu/~kyros/). I previously was an undergraduate research student under Terrance Boult.
 
 I most recently interned at Sony AI Japan with Daisuke Iso and Feiran Li. I have also interned at Samsung AI Center Toronto twice, mentored by Michael Brown, Mahmoud Afifi, Junyong Lee, and Abhijith Punnappurath. Previously, I interned at Adobe on Marc Levoy's NextCam team, mentored by Shumian Xin, Zhoutong Zhang, and Cecilia Zhang.
+
+**"For as long as I take care of my people, they will care for me as well."**

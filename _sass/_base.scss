@@ -392,6 +392,20 @@ footer.sticky-bottom {
   }
 }
 
+.thoughts-list {
+  margin: 1.5rem 0 0;
+  padding-left: 1.25rem;
+
+  li {
+    margin-bottom: 0.65rem;
+  }
+
+  .thought-date {
+    color: $grey-color;
+    font-size: $font-size-sm;
+  }
+}
+
 .pagination .page-item.active .page-link {
   background-color: var(--global-theme-color);
   &:hover {

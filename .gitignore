@@ -34,3 +34,22 @@ Icon
 *.log
 tmp/
 temp/
+newimages/
+
+# Resume / CV LaTeX build artifacts (keep .tex and .bib only)
+WebsiteResume/*.aux
+WebsiteResume/*.bbl
+WebsiteResume/*.bcf
+WebsiteResume/*.blg
+WebsiteResume/*.fdb_latexmk
+WebsiteResume/*.fls
+WebsiteResume/*.out
+WebsiteResume/*.pdf
+WebsiteResume/*.run.xml
+WebsiteResume/*.synctex.gz
+WebsiteResume/*.toc
+WebsiteResume/*.lof
+WebsiteResume/*.lot
+WebsiteResume/*.nav
+WebsiteResume/*.snm
+WebsiteResume/*.vrb

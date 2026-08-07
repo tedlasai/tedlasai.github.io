@@ -1,2 +1,10 @@
-- date: 2026-8-6
-  content: My talk on <a href="https://www.youtube.com/watch?v=t1jlQYqknNw">Generative Rephotography with Video Models</a> is public — I discuss our SIGGRAPH Asia 2025 papers on leveraging video models to get more out of blurry images.
+- date: 2026-08-07
+  content: 'Our paper <a href="https://ccmmlp.github.io/">Off the Planckian Locus: Using 2D Chromaticity to Improve In-Camera Color</a> was accepted to ECCV 2026 as a Spotlight Oral!'
+- date: 2026-08-06
+  content: 'My talk on <a href="https://www.youtube.com/watch?v=t1jlQYqknNw">Generative Rephotography with Video Models</a> is public — I discuss our SIGGRAPH Asia 2025 papers on leveraging video models to get more out of blurry images.'
+- date: 2026-08-05
+  content: 'Successfully defended my PhD at York University!'
+- date: 2026-07-22
+  content: 'Accepted to the <a href="https://eccv.ecva.net/Conferences/2026/CallForDoctoralConsortium">ECCV 2026 Doctoral Consortium</a>.'
+- date: 2025-12-01
+  content: 'Awarded the <a href="https://schmidtfellows.utoronto.ca/">Eric and Wendy Schmidt AI in Science Postdoctoral Fellowship</a> at the University of Toronto (Schmidt Sciences).'

@@ -30,13 +30,23 @@
       </div>
       <div class="pub-authors">
         {% for author in entry.author_array %}
+          {% assign starred = false %}
+          {% if entry.equal_contribution %}
+            {% assign eq = entry.equal_contribution | split: ' and ' %}
+            {% for star_last in eq %}
+              {% assign star_last_s = star_last | strip %}
+              {% if author.last == star_last_s %}
+                {% assign starred = true %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
           {% if author.last == site.scholar.last_name %}
-            <strong>{{ author.first }} {{ author.last }}</strong>{% unless forloop.last %},{% endunless %}
+            <strong>{{ author.first }} {{ author.last }}{% if starred %}*{% endif %}</strong>{% unless forloop.last %},{% endunless %}
           {% else %}
             {% if site.data.coauthors[author.last] %}
-              <a href="{{ site.data.coauthors[author.last].url }}" target="_blank">{{ author.first }} {{ author.last }}</a>{% unless forloop.last %},{% endunless %}
+              <a href="{{ site.data.coauthors[author.last].url }}" target="_blank">{{ author.first }} {{ author.last }}{% if starred %}*{% endif %}</a>{% unless forloop.last %},{% endunless %}
             {% else %}
-              {{ author.first }} {{ author.last }}{% unless forloop.last %},{% endunless %}
+              {{ author.first }} {{ author.last }}{% if starred %}*{% endif %}{% unless forloop.last %},{% endunless %}
             {% endif %}
           {% endif %}
         {% endfor %}
@@ -61,6 +71,7 @@
       {% endif %}
       {% if entry.video %}<a href="{{ entry.video }}" class="pub-link" target="_blank">video</a>{% endif %}
       {% if entry.code %}<a href="{{ entry.code }}" class="pub-link" target="_blank">code</a>{% endif %}
+      {% if entry.dataset %}<a href="{{ entry.dataset }}" class="pub-link" target="_blank">dataset</a>{% endif %}
       {% if entry.poster %}
         <a href="{% if entry.poster contains '://' %}{{ entry.poster }}{% else %}{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}{% endif %}" class="pub-link" target="_blank">poster</a>
       {% endif %}

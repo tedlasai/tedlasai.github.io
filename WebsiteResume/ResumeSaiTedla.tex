@@ -1,0 +1,704 @@
+% CV using letter.cls
+
+
+\documentclass[a4paper, 11pt]{letter}
+
+
+%%%%%%%%%%%%%%%%%   CONSTANTS   %%%%%%%%%%%%%%%%%
+
+% AUTHOR DETAILS
+\newcommand{\cvauthor}{SaiKiran Tedla}                        % Author of CV
+\newcommand{\authoremail}{tedlasai@gmail.com}               % Email of CV author
+\newcommand{\authortel}{647-507-1032}                    % Github name of CV author
+\newcommand{\authorweb}{https://tedlasai.github.io}               % Web page of CV author
+\newcommand{\authorgithub}{tedlasai}                     % Github name of CV author
+\newcommand{\authororcid}{0000-0002-2679-2881}                     % Github name of CV author
+
+% Author address
+\newcommand{\authoraddrone}{Address: Toronto, Ontario}                       % First line
+\newcommand{\authoraddrtwo}{\textcolor{red}{Toronto, Ontario.}}              % Second line
+\newcommand{\authoraddrthree}{\textcolor{red}{Toronto, Ontario.}}              % Second line
+\newcommand{\authoraddrfour}{\textcolor{red}{Toronto, Ontario.}}              % Second line
+
+\newcommand{\pdftitle}{CV~\cvauthor}        % Title of PDF
+\newcommand{\pdfauthor}{\cvauthor}          % Author of PDF
+
+% STYLE ATTRIBUTES
+\newcommand{\titlecolor}{black}             % Color of CV title
+\newcommand{\sectioncolor}{black}           % Color of section titles
+\newcommand{\linkcolor}{royalblue}               % Color of links
+\newcommand{\titlefontsize}{11pt}           % Font size of CV title
+\newcommand{\sectionfontsize}{12pt}         % Font size of section title
+\newcommand{\subsectionfontsize}{11pt}      % Font size of job titles, edu titles and similar
+\newcommand{\linespacing}{.2em}             % Line spacing for section-level text
+\newcommand{\leftspacing}{0.8cm}            % Left spacing of bullet points
+\newcommand{\innerlinespacing}{0.1em}       % Line spacing for description text inside edu and work entries
+\newcommand{\marginleft}{2cm}               % Left margin
+\newcommand{\marginright}{2cm}              % Right margin
+\newcommand{\margintop}{2cm}                % Top margin
+\newcommand{\marginbottom}{2cm}             % Bottom margin
+
+
+%%%%%%%%%%%%%%%%%   PACKAGE IMPORTS   %%%%%%%%%%%%%%%%%
+\usepackage[a4paper, bindingoffset=0.0cm, left=\marginleft, right=\marginright, top=\margintop, bottom=\marginbottom, footskip=.25in]{geometry}
+\usepackage{url}
+\usepackage{xcolor}
+\definecolor{royalblue}{HTML}{4169E1}
+\usepackage[bookmarks, colorlinks, breaklinks, pdftitle=\pdftitle, pdfauthor=\pdfauthor]{hyperref}
+\hypersetup{linkcolor=\linkcolor, citecolor=\linkcolor, filecolor=black, urlcolor=\linkcolor}
+\usepackage[
+  backend=biber,
+  maxbibnames=99,
+  sorting=ydnt
+]{biblatex}
+\usepackage{tabularx}
+\usepackage{xltabular}
+\newcounter{talkctr}
+
+\newcommand{\talkentry}[4]{%
+  \stepcounter{talkctr}%
+  [\arabic{talkctr}] #1 & \hfill #3 \\[1pt]
+  \hspace{0.5cm}\textit{\small{#2}} & \hfill \small{\href{#4}{Presentation}} \\[1pt]
+}
+
+\newcounter{mediactr}
+
+\newcommand{\mediaentry}[4]{%
+  \stepcounter{mediactr}%
+  [\arabic{mediactr}] #1 & \hfill #3 \\[1pt]
+  \hspace{0.5cm}\textit{\small{#2}} & \hfill \small{\href{#4}{Link}} \\[1pt]
+}
+
+
+
+\DeclareSortingScheme{ydnt}{
+  \sort{ \field{presort} } % presort groups first
+  \sort[direction=descending]{ \field{year} \field{date} }
+  \sort{ \name{author} }
+  \sort{ \field{title} }
+}
+% Custom sorting: presort (a before b), then year (desc), name, title
+
+
+% Automatically tag entries where YOU are first author with presort=a
+% Replace LASTNAME with your family name as it appears 
+\usepackage{ifthen}
+\usepackage{enumitem}
+\usepackage{changepage}
+\usepackage{scrextend}
+\usepackage[normalem]{ulem}
+\usepackage{tabularx}
+\usepackage{eurosym}
+
+%Last Page Reference
+\usepackage{lastpage}
+\usepackage{bm}
+\makeatletter
+\renewcommand{\@oddfoot}{\hfil \thepage/{\color{black}\pageref*{LastPage}} \hfil}
+
+\usepackage{comment}
+\widowpenalty10000
+\clubpenalty10000
+
+%for publications
+%\usepackage[sorting=none, maxbibnames=3]{biblatex} % maxbibnames=3
+
+%%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%
+
+% Count total number of entries in each refsection
+\AtDataInput{%
+  \csnumgdef{entrycount:\therefsection}{%
+    \csuse{entrycount:\therefsection}+1}}
+
+% Print the labelnumber as the total number of entries in the
+% current refsection, minus the actual labelnumber, plus one
+
+%\DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}    
+% \newrobustcmd*{\mkbibdesc}[1]{%
+%  \number\numexpr\csuse{entrycount:\therefsection}+1-#1\relax}
+%%%%%%%%%%%%%%%%% BIBLIOGRAPHY %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%   COMMAND DEFINITIONS   %%%%%%%%%%%%%%%%%
+
+% Make the title of the CV
+\renewcommand{\maketitle}[1]{
+    \begin{center}
+    {\textcolor{\titlecolor}{\huge\bf #1}}
+    \end{center}
+    \smallskip\hrule height 1pt
+}
+
+% Create the list of contact details
+\newcommand{\contact}{
+Website: \url{\authorweb} \hfill  \authoraddrone \\
+Email\hspace{0.35cm}: \href{mailto:\authoremail}{\texttt{\authoremail}} % \\
+%ORCiD\hspace{0.1cm}: \href{https://orcid.org/\authororcid}{\texttt{\authororcid}}\hspace{5.25cm}  
+}
+%\authoraddrthree \\
+% GitHub\hspace{0.1cm}: \href{http://www.github.com/\authorgithub}{\texttt{\authorgithub}} \hspace{6.65cm} \authoraddrfour
+% }
+
+% This command defines the style of the section title
+\newcommand{\section}[1]{%
+    \medskip
+    {\fontsize{\sectionfontsize}{\sectionfontsize}\textcolor{\sectioncolor}{\bf #1}\strut}\par
+    \nointerlineskip
+    \hrule height 0.5pt
+    \smallskip
+}
+
+% Entry for text divided in three columns
+\newcommand{\threecolumns}[3]{
+    \begin{tabular}{p{0.33\linewidth} p{0.33\linewidth} p{0.33\linewidth}}
+    \parbox[t]{\textwidth}{#1} & \parbox[t]{\textwidth}{#2} & \parbox[t]{\textwidth}{#3}
+    \end{tabular}
+}
+
+% Entry for text divided in two columns
+\newcommand{\twocolumns}[2]{
+    \begin{tabular}{p{0.5\linewidth} p{0.5\linewidth}}
+    \parbox[t]{\textwidth}{#1} & \parbox[t]{\textwidth}{#2}
+    \end{tabular}
+}
+
+% Work entry where title and employer are on two lines
+\newcommand{\workentrytwolines}[4]{
+    % Arguments: date, title, employer, description
+    {\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#2} \hfill \small{#1} \\
+    \textbf{#3}
+    }
+
+    \vspace{0mm}
+    {\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+    \setlength{\parskip}{0cm plus0mm minus0mm}#4}
+
+}
+
+% Work entry where title and employer are on the same lines
+\newcommand{\workentryoneline}[4]{
+    % Arguments: date, title, employer, description
+    {\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#2, #3} \hfill \small{#1}
+    }
+
+    \vspace{0mm}
+    {\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+    \setlength{\parskip}{0cm plus0mm minus0mm}#4}
+
+}
+
+% Work entry where title and employer are on the same lines
+\newcommand{\workentryonelinenocomma}[4]{
+    % Arguments: date, title, employer, description
+    {\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#2} \hfill \small{#1}
+    }
+
+    \vspace{0mm}
+    {\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+    \setlength{\parskip}{0cm plus0mm minus0mm}#3}
+
+}
+
+
+
+% Education entry
+\newcommand{\eduentry}[4]{
+    % Arguments: date, degree, university, description
+    {\fontsize{\subsectionfontsize}{\subsectionfontsize}\textbf{#3} \hfill \small{#1} \\
+    \textit{#2}
+    }
+
+    \vspace{0mm}
+    {\setlist{itemsep=\innerlinespacing, topsep=\innerlinespacing, leftmargin=\leftspacing}
+    \setlength{\parskip}{0cm plus0mm minus0mm}#4}
+    \par
+}
+
+% Generic entry in a CV with first a title and a description
+\newcommand{\cvitem}[2]{
+    % Arguments: title (bold part), description (non-bold part)
+    {\setlength{\parskip}{\linespacing plus0mm minus0mm}\textbf{#1}: #2}
+
+}
+
+
+% Selectors for multiple implementations
+\newcommand{\workentry}{\workentryoneline}
+\newcommand{\workentrynocomma}{\workentryonelinenocomma}
+
+%\newcommand{\publication}{\publicationeasyread}
+
+% Set default formatting for lists (bullet and numbered lists)
+\setlist{itemsep=\linespacing, topsep=.0em, leftmargin=\leftspacing}
+
+% Reduce size of bullet character
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+%%%%%%%%%%%%%%%%%   DOCUMENT   %%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\maketitle{\cvauthor}
+
+\contact
+
+% \section{Research Interests}
+% I explore the intersection of computational photography, computer vision, and generative modeling.  
+% My research focuses on rethinking the camera pipeline — from sensor demosaicing and auto-exposure to color correction and HDR reconstruction — and extending it with generative approaches for camera editing and image-based synthesis.  
+% Broadly, I am interested in advancing image signal processing using modern machine learning techniques to build accurate, controllable, and creative imaging systems.
+
+\section{Education}
+
+\eduentry{Aug 2022--Aug 2026}
+{PhD in Computer Science \hfill GPA: A+}
+{York University, Toronto, Canada}
+{\small{PhD Thesis: Demosaicing for New
+Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}\\ Successfully defended August 5, 2026.}
+}
+\smallskip
+
+\eduentry{Jul 2022}
+{Master of Science in Computer Science \hfill GPA: A}
+{York University Toronto, Canada}
+{\small{MS Thesis: \href{https://yorkspace.library.yorku.ca/items/763b8e4d-7bfa-47b4-8938-921182b5000c}{Analyzing Color Imaging Failure on Consumer Grade Cameras} \\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}
+}
+}
+\smallskip
+
+\eduentry{May 2019}
+{Bachelor of Science in Computer Engineering \hfill GPA: 3.99/4.0}
+{University of Colorado Springs, Colorado, USA}
+{\small{\textbf{Outstanding Undergraduate Student}}}
+
+
+
+
+\section{Experience}
+\workentry{May 2020--Present}
+{Research Student}{York University}{
+\begin{itemize}
+    \item{\small{\textbf{Computational Vision and Imaging Lab, \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}}\hfill\textit{\small{Toronto, Canada}}}}
+    \item{\small{Reasearch on computational imaging: color correction, exposure, focus, compression, and demosaicing.}}
+\end{itemize}
+}
+
+\workentry{Feb 2025--Present}
+{Visiting Research Student}{University of Toronto}{
+\begin{itemize}
+    \item{\small{\textbf{Computational Imaging Group, \href{https://davidlindell.com/}{Dr.~David Lindell} and \href{https://www.cs.toronto.edu/~kyros/}{Dr.~Kyros Kutulakos}}\hfill\textit{\small{Toronto, Canada}}}}
+    \item{\small{Utilizing video diffusion models for image editing and working on low-light 3D reconstruction problems}}
+\end{itemize}
+}
+
+
+\workentry{July 2025--Mar 2025}
+{Research Intern}{Sony AI}{
+\begin{itemize}
+    \item{\small{\textbf{Imaging and Sensing, \href{https://sites.google.com/view/feiranlihomepage/research?authuser=0}{Dr.~Feiran Li} and \href{https://ai.sony/people/Daisuke-Iso/}{Dr.~\,Daisuke Iso}}\hfill\textit{\small{Tokyo, Japan}}}}
+    \item{\small{Learning HDR reconstruction methods}}
+\end{itemize}
+}
+
+\workentry{Mar 2025--July 2025}
+{Research Intern}{Samsung AI Center Toronto}{
+\begin{itemize}
+    \item{\small{\textbf{Computational Photography, \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown} and \href{https://sites.google.com/view/mafifi}{Dr.~Mahmoud Afifi}}\hfill\textit{\small{Toronto, Canada}}}}
+    \item{\small{Improving color correction within the camera pipeline with a focus on colorimetric accuracy}}
+\end{itemize}
+}
+
+
+\workentry{May 2024--Jan 2025}
+{Research Intern}{Adobe}{
+\begin{itemize}
+    \item{\small{\textbf{NextCam, \href{https://vast.uccs.edu/~tboult/}{Dr.\,Shumian Xin}, \href{https://ceciliavision.github.io/}{Dr.\,Cecilia Zhang}, and \href{https://ztzhang.info/}{Dr.\,Zhoutong Zhang}}\hfill\textit{\small{San Jose, USA}}}}
+    \item{\small{Implementing video diffusion models and 3D representations for the task of refocusing images}}
+\end{itemize}
+}
+
+\workentry{Aug 2022--Aug 2023}
+{Research Intern}{Samsung AI Center Toronto}{
+\begin{itemize}
+    \item{\small{\textbf{Computational Photography, \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}}\hfill\textit{\small{Toronto, Canada}}}}
+    \item{\small{Learning demosaicing for various sensor patterns and raw reconstruction (Graphics2RAW)}}
+\end{itemize}
+}
+
+\workentry{Apr 2021--Jan 2022}
+{Computer Vision Consultant}{Scanwell Health}{
+\begin{itemize}
+    \item{\small{\textbf{Color Measurement}\hfill\textit{\small{Los Angeles, USA}}}}
+    \item{\small{Developed custom color correction algorithms for medical imaging applications}}
+\end{itemize}
+}
+
+\workentry{June 2015--Jan 2021}
+{Research Student / System Administrator}{UCCS}{
+\begin{itemize}
+    \item{\small{\textbf{Vision and Security Technology (VAST) Lab, \href{https://vast.uccs.edu/~tboult/}{Dr.\,Terrance Boult}}\hfill\textit{\small{Colorado Springs, USA}}}}
+    \item{\small{Built a Raspberry Pi Polarization Camera and worked on RGB camera response function estimation from polarization cues}}
+\end{itemize}
+}
+
+\workentry{May 2020--Mar 2021}
+{System Architect}{AMERGINT Technologies}{
+\begin{itemize}
+    \item{\small{\textbf{Advanced Systems}\hfill\textit{\small{Colorado Springs, USA}}}}
+    \item{\small{Reorganized and modified the build system for faster performance – improved build speed by up to 60\%}}
+\end{itemize}
+}
+
+\workentry{May 2018--Aug 2018}
+{App Development Intern}{Keysight Technologies}{
+\begin{itemize}
+    \item{\small{\textbf{IT}\hfill\textit{\small{Colorado Springs, USA}}}}
+    \item{\small{Built a cross-platform emergency awareness app that went into production using Xamarin (C\# and XAML)}}
+\end{itemize}
+}
+
+\workentry{Mar 2015--Mar 2016}
+{Website Administrator}{TEDxColoradoSprings / TEDxUCCS}{
+\begin{itemize}
+    \item{\small{\textbf{Web Development}\hfill\textit{\small{Colorado Springs, USA}}}}
+    \item{\small{Built and maintained the TEDxColoradoSprings and TEDxUCCS websites}}
+\end{itemize}
+}
+
+\section{Publications}
+\begin{refsection}[selected_pub.bib]
+\nocite{*}
+\printbibliography[heading=none]
+\end{refsection}
+
+
+\section{Preprints and Patents}
+\begin{refsection}[other_pubs.bib]
+\nocite{*}
+\printbibliography[heading=none]
+\end{refsection}
+
+\section{Honors and Awards}
+
+\eduentry{2026}
+{European Conference on Computer Vision (ECCV)}
+{Doctoral Consortium}
+{
+\begin{itemize}
+    \item Accepted to the \href{https://eccv.ecva.net/Conferences/2026/CallForDoctoralConsortium}{ECCV 2026 Doctoral Consortium}.
+\end{itemize}
+}
+
+\eduentry{2026-2028}
+{Schmidt Sciences and University of Toronto}
+{Eric and Wendy Schmidt AI in Science Postdoctoral Fellowship}
+{
+\begin{itemize}
+    \item Awarded the \href{https://schmidtfellows.utoronto.ca/}{Eric and Wendy Schmidt AI in Science Postdoctoral Fellowship} (\$85,000/year) in Dec 2025 to explore generative re-photography at the University of Toronto.
+\end{itemize}
+}
+
+\eduentry{2026}
+{University of Toronto}
+{Arts and Sciences Postdoctoral Fellowship (Declined)}
+{
+\begin{itemize}
+    \item Awarded the University of Toronto in Science postdoctoral fellowship (\$65,000/year) to explore generative re-photography at the University of Toronto.
+\end{itemize}
+}
+
+
+\eduentry{2025, 2026}
+{IEEE / CVPR}
+{Outstanding Reviewer Award}
+{
+\begin{itemize}
+    \item Recognized among the top 5.6\% of reviewers for CVPR 2025 and top 5\% for CVPR 2026.
+\end{itemize}
+}
+
+\eduentry{2022-2026}
+{York University}
+{PhD Graduate Fellowship}
+{
+\begin{itemize}
+    \item Fellowship from York University (\$32,500/year).
+\end{itemize}
+}
+
+
+\eduentry{2024}
+{Lassonde School of Engineering Photography Competition}
+{People’s Choice Award}
+{
+\begin{itemize}
+    \item Received the People’s Choice Award for best photograph in the annual Lassonde Engineering Photography Competition.
+\end{itemize}
+}
+
+\eduentry{2020-2022}
+{York University}
+{Masters Graduate Fellowship}
+{
+\begin{itemize}
+    \item Fellowship from York University (\$17,000/year).
+\end{itemize}
+}
+
+\eduentry{2019}
+{University of Colorado Colorado Springs, Computer Engineering}
+{Outstanding Undergraduate Student}
+{
+\begin{itemize}
+    \item Awarded to the top undergraduate student in Computer Engineering.
+\end{itemize}
+}
+
+\eduentry{2017}
+{Educating Children of Color, Colorado Springs}
+{Leon Young Scholarship}
+{
+\begin{itemize}
+    \item Awarded to the student who best honors the legacy of Leon Young, the first Black mayor of Colorado Springs.
+\end{itemize}
+}
+
+\eduentry{2017}
+{Educating Children of Color, Colorado Springs}
+{Fairness for All Scholarship}
+{
+\begin{itemize}
+    \item Awarded to the student who best demonstrates fairness and justice within the community.
+\end{itemize}
+}
+
+
+
+\section{Talks}
+\begin{xltabular}{\linewidth}{@{}>{\raggedright\arraybackslash}Xr@{}}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{University of Washington, Hosted by Steve Seitz}
+{May 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{CMU VASC Seminar, Hosted by Ioannis Gkioulekas}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{Princeton PIXL Seminar, Hosted by Felix Heide}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{Cornell Tech, Hosted by Noah Snavely}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{MIT CSAIL Vision Seminar, Hosted by Vincent Sitzmann}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{Harvard - Zickler Lab, Hosted by Todd Zickler}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{MIT Media Lab - Camera Culture, Hosted by Ramesh Raskar}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{Stanford University, Hosted by Gordon Wetzstein}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography with Video Models}
+{University of California Berkeley, Hosted by Laura Waller}
+{Apr 2026}
+{https://www.dropbox.com/scl/fi/a0uesxmsngr7xuaa0ruu2/MarchGenerativeRephotography.pptx?rlkey=d6toyekemysyxaalqhqrns3gd&st=jhkmcha5&dl=0}
+
+\talkentry
+{Generative Re-Photography}
+{Sony AI, Tokyo, Japan}
+{Feb 2026}
+{https://www.dropbox.com/scl/fi/dkzyz1baaj1fn0h1honxn/OsakaGroup.pptx?rlkey=srlz5apn7ycl7wzivnbjqy03d&dl=0}
+
+\talkentry
+{Generative Re-Photography}
+{University of Osaka, Tokyo, Japan}
+{Oct 2025}
+{https://www.dropbox.com/scl/fi/dkzyz1baaj1fn0h1honxn/OsakaGroup.pptx?rlkey=srlz5apn7ycl7wzivnbjqy03d&dl=0}
+
+\talkentry
+{Generative Re-Photography}
+{\href{https://sainetwork.connpass.com/event/367769/}{Spatial AI Network, Computer Vision League (CVL)} -- Osaka, Japan}
+{Oct 2025}
+{https://www.dropbox.com/scl/fi/dkzyz1baaj1fn0h1honxn/OsakaGroup.pptx?rlkey=srlz5apn7ycl7wzivnbjqy03d&dl=0}
+
+\talkentry
+{Examining Autoexposure for Challenging Scenes}
+{\href{https://vectorinstitute.ai/vector-institute-computer-vision-workshop-showcases-the-fields-current-capabilities-and-future-potential/}{Vector AI Workshop on Computer Vision}, Toronto, Ontario}
+{Mar 2024}
+{https://www.dropbox.com/scl/fi/3tv1qx1y7v0dm1tqxescx/VectorLightningTalkMar21.pptx?rlkey=ldn9fez97a32iljtx9tfzpr6h&dl=0}
+
+\end{xltabular}
+
+
+\section{Reviewing}
+\cvitem{1}{Conference on Computer Vision and Pattern Recognition (CVPR), 2024–2026, \textbf{Outstanding Review Award 2025, 2026}}
+\cvitem{2}{Conference on Neural Information Processing Systems (NeurIPS), 2026}
+\cvitem{3}{SIGGRAPH Asia, 2026}
+\cvitem{4}{European Conference on Computer Vision (ECCV), 2024, 2026}
+\cvitem{5}{British Machine Vision Conference (BMVC), 2026}
+\cvitem{6}{IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2025}
+\cvitem{7}{SIGGRAPH, 2025}
+\cvitem{8}{Winter Conference on Applications of Computer Vision (WACV), 2023}
+
+
+\section{In the Media}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+
+\mediaentry
+{Sai T. is helping advance the future of AI-powered photography and computer vision.}
+{Lassonde School of Engineering, York University}
+{Jul 2026}
+{https://www.linkedin.com/posts/yorku-lassonde-computerscience-ugcPost-7477378157684170752-NsDr/}
+
+\mediaentry
+{Demand for computer scientists surging --- not shrinking --- as AI marches on}
+{Toronto Star and York University}
+{Mar 2026}
+{https://www.thestar.com/sponsored-sections/preparing-students-for-jobs-of-the-future/demand-for-computer-scientists-surging-not-shrinking-as-ai-marches-on/article_acfb33e4-1a8b-40b3-8d80-0b2c5edba32d.html}
+
+\mediaentry
+{Colorado Springs senior earns bachelor’s degree in high school}
+{KRDO}
+{May 2019}
+{https://krdo.com/news/2019/05/24/colorado-springs-senior-earns-bachelors-degree-in-high-school/}
+
+
+
+\multicolumn{2}{@{}X@{}}{}
+
+\end{tabularx}
+
+\section{Advising and Mentorship}
+
+\textbf{Graduate Students}  
+\begin{itemize}
+    \item \href{https://www.linkedin.com/in/karanpreet-raja}{Karanpreet Raja} \hfill (Aug 2025 -- Present)
+        \item \href{https://beixuanyang.com/}{Beixuan Yang} \hfill (Mar 2022 -- Mar 2025)  
+\end{itemize}
+
+
+
+\textbf{Undergraduate Students}  
+\begin{itemize}
+
+        \item \href{https://www.linkedin.com/in/joshelittle/}{Joshua Little} \hfill (Apr 2025 -- Mar 2026)  
+    \item \href{https://www.linkedin.com/in/karanpreet-raja}{Karanpreet Raja} \hfill (Jan 2025 -- Aug 2025)
+    \item \href{https://www.linkedin.com/in/rajatajay}{Rajat Ajaykumar} \hfill (Aug 2022 -- Mar 2023)  
+
+\end{itemize}
+
+
+
+\section{Teaching}
+\eduentry{Winter 2024, Winter 2025, Winter 2026}
+{Teaching Assistant, York University}
+{EECS 1516: Object-Oriented Design and Principles}
+{}
+
+\eduentry{Fall 2024}
+{Teaching Assistant, York University}
+{EECS 1022: Programming for Mobile Computing}
+{}
+
+\eduentry{Winter 2023}
+{Teaching Assistant, York University}
+{EECS 1570: Computing for Psychology}
+{}
+
+\eduentry{Fall 2022}
+{Teaching Assistant, York University}
+{MATH 1090: Introduction to Logic for Computer Science}
+{}
+
+\eduentry{Fall 2021, Winter 2022, Fall 2023}
+{Teaching Assistant, York University}
+{EECS 1012/1015: Introduction to Computer Science}
+{}
+
+\eduentry{Fall 2018, Winter 2019}
+{Teaching Assistant, University of Colorado Colorado Springs}
+{CS 1150: Principles of Computer Science}
+{}
+
+\section{Skills}
+
+\cvitem{Programming}{Java, C++, C, Python, HTML, CSS, JavaScript, MATLAB}
+\cvitem{Projects}{FastSwap (social media app for contact sharing via QR codes); Political Ideology Detector (NLP-based web app); Robotic Car (GPS navigation, obstacle avoidance, sensor integration); Quadcopters (reverse engineering and reconstruction)}
+% \cvitem{Courses}{Completed Stanford CS231N (Convolutional Neural Networks) and Andrew Ng’s Machine Learning (Coursera)}
+\cvitem{Certifications}{Oracle Java SE 8 Professional (OCP); C++ Associate (C++ Institute); CompTIA Linux+; LPIC-1: Linux Administrator}
+
+\section{References}
+
+\textbf{Dr. Michael S. Brown}\\
+Professor, Dept. of Electrical Engineering and Computer Science\\
+York University; Vice President, Samsung Research America; Director, Samsung AI Center Toronto\\
+Toronto, Canada\\
+\href{https://research.samsung.com/aicenter_toronto}{Webpage}\\
+Email: \href{mailto:michael.brown@yorku.ca}{\texttt{michael.brown@yorku.ca}}
+
+\vspace{1em}
+
+\textbf{{Dr}. David B. Lindell}\\
+Assistant Professor, Dept. of Computer Science\\
+University of Toronto; Faculty Affiliate, Vector Institute\\
+Toronto, Canada\\
+\href{https://davidlindell.com}{Webpage}\\
+Email: \href{mailto:lindell@cs.toronto.edu}{\texttt{lindell@cs.toronto.edu}}
+
+\vspace{1em}
+
+\textbf{Dr. Kiriakos N. Kutulakos}\\
+Professor, Dept. of Computer Science\\
+University of Toronto\\
+Toronto, Canada\\
+Phone: (416) 946-8045\\
+\href{https://www.cs.toronto.edu/~kyros/}{Webpage}\\
+Email: \href{mailto:kyros@cs.toronto.edu}{\texttt{kyros@cs.toronto.edu}}
+
+% \vspace{1em}
+
+% \textbf{Dr. Abhijith Punnappurath}\\
+% Research Scientist\\
+% Samsung AI Center Toronto\\
+% Toronto, Canada\\
+% \href{https://abhijithpunnappurath.github.io/}{Webpage}\\
+% Email: \href{mailto:abhijith.punnappurath@samsung.com}{\texttt{abhijith.punnappurath@samsung.com}}
+
+% \vspace{1em}
+
+% \textbf{Dr. Zhoutong Zhang}\\
+% Research Scientist, Adobe Research (NextCam)\\
+% San Jose, CA, United States\\
+% \href{https://ztzhang.info}{Webpage}\\
+% Email: \href{mailto:zhoutong@adobe.com}{\texttt{zhoutong@adobe.com}}
+
+
+ 
+
+\end{document}

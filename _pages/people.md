@@ -12,7 +12,7 @@ nav_order: 3
 ##### Postdoc
 * [Dongyu Du](https://dongyu-du.github.io/) (2025-)
 * [Ben Attal](https://benattal.github.io/) (2025-)
-* [Sai Tedla](https://sites.google.com/view/tedlasai/) (2026-)
+* [Sai Tedla](https://tedlasai.github.io/) (2026-)
 * [Alex Hanson](https://www.cs.umd.edu/~hanson/) (2026-)
 
 ##### PhD
@@ -100,5 +100,5 @@ nav_order: 3
 * [Siddharth Somasundaram](https://sidsoma.com/) (2024), *MIT*
 * [Michael Neumayr](https://michaelnoi.github.io/) (2024-2025), *TUM*
 * [Seung-Hwan Baek](https://www.shbaek.com/) (summer 2025), *POSTECH*
-* [Sai Tedla](https://sites.google.com/view/tedlasai/) (2025-2026), *York University*
+* [Sai Tedla](https://tedlasai.github.io/) (2025-2026), *York University*
 * [Hoon-Gyu Chung](https://sites.google.com/view/hoongyu-chung/) (2025-2026), *POSTECH*

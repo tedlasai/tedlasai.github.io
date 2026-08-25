@@ -38,12 +38,20 @@
 \newcommand{\margintop}{2cm}                % Top margin
 \newcommand{\marginbottom}{2cm}             % Bottom margin
 
+% Publications list accents — tweak these HTML hex values to restyle pubs
+\newcommand{\pubabbrhex}{6B3FA0}            % Conference abbreviations (ECCV, CVPR, ...)
+\newcommand{\pubnotehex}{B83A3A}            % Awards/notes (Spotlight Oral, Highlight, ...)
+
 
 %%%%%%%%%%%%%%%%%   PACKAGE IMPORTS   %%%%%%%%%%%%%%%%%
 \usepackage[a4paper, bindingoffset=0.0cm, left=\marginleft, right=\marginright, top=\margintop, bottom=\marginbottom, footskip=.25in]{geometry}
 \usepackage{url}
 \usepackage{xcolor}
 \definecolor{royalblue}{HTML}{4169E1}
+\definecolor{pubabbrcol}{HTML}{\pubabbrhex}
+\definecolor{pubnotecol}{HTML}{\pubnotehex}
+\DeclareRobustCommand{\pubabbr}[1]{\textcolor{pubabbrcol}{\textbf{#1}}}
+\DeclareRobustCommand{\pubnote}[1]{\textcolor{pubnotecol}{\textbf{#1}}}
 \usepackage[bookmarks, colorlinks, breaklinks, pdftitle=\pdftitle, pdfauthor=\pdfauthor]{hyperref}
 \hypersetup{linkcolor=\linkcolor, citecolor=\linkcolor, filecolor=black, urlcolor=\linkcolor}
 \usepackage[
@@ -252,11 +260,11 @@ Email\hspace{0.35cm}: \href{mailto:\authoremail}{\texttt{\authoremail}} % \\
 {PhD in Computer Science \hfill GPA: A+}
 {York University, Toronto, Canada}
 {\small{PhD Thesis: Demosaicing for New
-Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}\\ Successfully defended August 5, 2026.}
+Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}}
 }
 \smallskip
 
-\eduentry{Jul 2022}
+\eduentry{Aug 2020--Jul 2022}
 {Master of Science in Computer Science \hfill GPA: A}
 {York University Toronto, Canada}
 {\small{MS Thesis: \href{https://yorkspace.library.yorku.ca/items/763b8e4d-7bfa-47b4-8938-921182b5000c}{Analyzing Color Imaging Failure on Consumer Grade Cameras} \\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}
@@ -264,7 +272,7 @@ Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michae
 }
 \smallskip
 
-\eduentry{May 2019}
+\eduentry{Aug 2015--May 2019}
 {Bachelor of Science in Computer Engineering \hfill GPA: 3.99/4.0}
 {University of Colorado Springs, Colorado, USA}
 {\small{\textbf{Outstanding Undergraduate Student}}}
@@ -273,7 +281,15 @@ Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michae
 
 
 \section{Experience}
-\workentry{May 2020--Present}
+\workentry{Starting Sept 2026}
+{Schmidt AI Postdoctoral Fellow}{University of Toronto}{
+\begin{itemize}
+    \item{\small{\textbf{Computational Imaging Group, \href{https://davidlindell.com/}{Dr.~David Lindell} and \href{https://www.cs.toronto.edu/~kyros/}{Dr.~Kyros Kutulakos}}\hfill\textit{\small{Toronto, Canada}}}}
+    \item{\small{Eric and Wendy Schmidt AI in Science Postdoctoral Fellowship; exploring generative re-photography and camera editing.}}
+\end{itemize}
+}
+
+\workentry{May 2020--Aug 2026}
 {Research Student}{York University}{
 \begin{itemize}
     \item{\small{\textbf{Computational Vision and Imaging Lab, \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michael Brown}}\hfill\textit{\small{Toronto, Canada}}}}
@@ -281,7 +297,7 @@ Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michae
 \end{itemize}
 }
 
-\workentry{Feb 2025--Present}
+\workentry{Feb 2025--Aug 2026}
 {Visiting Research Student}{University of Toronto}{
 \begin{itemize}
     \item{\small{\textbf{Computational Imaging Group, \href{https://davidlindell.com/}{Dr.~David Lindell} and \href{https://www.cs.toronto.edu/~kyros/}{Dr.~Kyros Kutulakos}}\hfill\textit{\small{Toronto, Canada}}}}
@@ -290,7 +306,7 @@ Sensor Patterns\\ Supervisor: \href{http://www.cse.yorku.ca/~mbrown/}{Dr.~Michae
 }
 
 
-\workentry{July 2025--Mar 2025}
+\workentry{July 2025--Mar 2026}
 {Research Intern}{Sony AI}{
 \begin{itemize}
     \item{\small{\textbf{Imaging and Sensing, \href{https://sites.google.com/view/feiranlihomepage/research?authuser=0}{Dr.~Feiran Li} and \href{https://ai.sony/people/Daisuke-Iso/}{Dr.~\,Daisuke Iso}}\hfill\textit{\small{Tokyo, Japan}}}}

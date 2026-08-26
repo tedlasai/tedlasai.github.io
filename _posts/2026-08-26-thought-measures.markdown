@@ -10,14 +10,14 @@ nav: false
 
 How do you measure?  
 But remember a measure tells little of those it measures  
-And instead tells volumes of the measurer.
+And instead tells volumes of the man measuring.
 
-Many others speak of their measures  
+Many speak of their measures  
 A number in a bank account  
-A number of followers.  
-A number of drinks.  
-A number of degrees.  
-A number of countries.  
+A number of followers  
+A number of drinks  
+A number of degrees  
+A number of countries  
 To them I wish safe travels
 
 Many hide their measures  

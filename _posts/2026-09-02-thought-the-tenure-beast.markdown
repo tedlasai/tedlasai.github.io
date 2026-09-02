@@ -9,13 +9,7 @@ nav: false
 
 This is not mine, but it was heavily influential.
 
-*Credit: Terrance Boult*
-
-<pre class="thought-poem">THE TENURE BEAST
-by Terrance Boult
-
-
-I chose to tilt at windmills,
+<pre class="thought-poem">I chose to tilt at windmills,
   though it 's generally well known
 What happens when you hit your head
   on walls of ivy and stone

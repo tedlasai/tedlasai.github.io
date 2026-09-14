@@ -84,6 +84,7 @@
         <a href="{% if entry.supp contains '://' %}{{ entry.supp }}{% else %}{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}{% endif %}" class="pub-link" target="_blank">supp</a>
       {% endif %}
       {% if entry.video %}<a href="{{ entry.video }}" class="pub-link" target="_blank">video</a>{% endif %}
+      {% if entry.oral %}<a href="{{ entry.oral }}" class="pub-link" target="_blank">oral</a>{% endif %}
       {% if entry.code %}<a href="{{ entry.code }}" class="pub-link" target="_blank">code</a>{% endif %}
       {% if entry.dataset %}<a href="{{ entry.dataset }}" class="pub-link" target="_blank">dataset</a>{% endif %}
       {% if entry.poster %}
